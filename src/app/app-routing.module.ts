@@ -5,11 +5,11 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './views/pages/login/login.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full'
+  // },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -35,7 +35,7 @@ const routes: Routes = [
     }
   },
 
-  {path: '**', redirectTo: 'login'}
+  // {path: '**', redirectTo: 'login'}
 ];
 
 @NgModule({

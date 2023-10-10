@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {environment} from 'src/environments/environment'
+import decode from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +27,41 @@ export class AuthService {
     } else {
       return true;
     }
+  }
+  isAdmin() {
+    const token: any = localStorage.getItem('token');
+    if (token) {
+      let user: any = decode(token);
+      let role = user.role;
+      if (role == 'admin' ) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  isAssociation(){
+    const token: any = localStorage.getItem('token');
+    if (token) {
+      let user: any = decode(token);
+      let role = user.role;
+      if ( role == 'asociacion') {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  isClub(){
+    const token: any = localStorage.getItem('token');
+    if (token) {
+      let user: any = decode(token);
+      let role = user.role;
+      if ( role == 'club') {
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 }
