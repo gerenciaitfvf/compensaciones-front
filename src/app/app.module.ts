@@ -37,6 +37,8 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -72,13 +74,16 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    HttpClientModule,
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
     IconSetService,
     Title
   ],
