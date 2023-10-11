@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import decode from 'jwt-decode';
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 
 @Component({
@@ -8,6 +8,7 @@ import { ClassToggleService, HeaderComponent } from '@coreui/angular';
   templateUrl: './default-header.component.html',
 })
 export class DefaultHeaderComponent extends HeaderComponent {
+  user: any;
 
   @Input() sidebarId: string = "sidebar";
 
@@ -17,5 +18,14 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   constructor(private classToggler: ClassToggleService) {
     super();
+  }
+  ngOnInit(): void {
+    this.init();
+  }
+  init() {
+    const token: any = localStorage.getItem('token');
+    if (token) {
+      this.user = decode(token);
+    }
   }
 }

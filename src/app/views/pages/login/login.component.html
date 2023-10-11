@@ -42,6 +42,7 @@
                       placeholder="Contraseña"
                       type="password"
                       formControlName="password"
+                      (keyup)="$event.keyCode == 13 ? login(): null "
                     />
                   </c-input-group>
                   <div

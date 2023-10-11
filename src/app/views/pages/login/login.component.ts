@@ -75,20 +75,19 @@ export class LoginComponent implements OnInit {
             let user: any = decode(token);
             let role = user.role;
             localStorage.setItem('token', token);
-            console.log(user)
-            // if (role == 'admin') {
-            //   this.router.navigateByUrl('dashboard/admin').then(() => {
-            //     Swal.close();
-            //   });
-            // } else if (role == 'club') {
-            //   this.router.navigateByUrl('dashboard').then(() => {
-            //     Swal.close();
-            //   });
-            // } else {
-            //   this.router.navigateByUrl('dashboard/license').then(() => {
-            //     Swal.close();
-            //   });
-            // }
+            if (role == 'admin') {
+              this.router.navigateByUrl('dashboard/admin').then(() => {
+                Swal.close();
+              });
+            } else if (role == 'club') {
+              this.router.navigateByUrl('dashboard').then(() => {
+                Swal.close();
+              });
+            } else {
+              this.router.navigateByUrl('dashboard/asociacion').then(() => {
+                Swal.close();
+              });
+            }
           }
         });
       } else {

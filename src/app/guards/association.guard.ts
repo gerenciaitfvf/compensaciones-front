@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGuard implements CanActivate {
+export class AssociationGuard implements CanActivate {
   alerts: any = '';
   constructor(
     private authService: AuthService,
@@ -14,7 +14,7 @@ export class AdminGuard implements CanActivate {
   ) {
   }
   canActivate(): boolean {
-    if (!this.authService.isAdmin()) {
+    if (!this.authService.isAssociation()) {
       console.log('Usuario no autorizado');
       Swal.fire({
         icon: 'error',
