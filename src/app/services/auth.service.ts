@@ -64,4 +64,10 @@ export class AuthService {
     }
     return false;
   }
+  adminlist() {
+    return this.http.get(`${this.URL}/admin` );
+  }
+  updateUser(data: any) {
+    return this.http.put(`${this.URL}/${data.id}`, data );
+  }
 }
