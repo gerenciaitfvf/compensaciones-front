@@ -40,6 +40,7 @@ export class DefaultLayoutComponent implements OnInit {
           {
             name: 'Panel de control',
             iconComponent: { name: 'cil-speedometer' },
+            url: '/dashboard/admin'
           },
           {
             name: 'Usuarios del sistema',
@@ -49,10 +50,15 @@ export class DefaultLayoutComponent implements OnInit {
                 name: 'Administración Club'
               },
               {
-                name: 'Administración FVF'
+                name: 'Administración FVF',
+                url: '/usuarios/admin'
               },
               {
                 name: 'Administración Asocioaciones'
+              },
+              {
+                name: 'Resgistro de usuarios',
+                url: '/usuarios/registro'
               },
 
             ]

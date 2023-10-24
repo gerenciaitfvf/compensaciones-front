@@ -70,4 +70,7 @@ export class AuthService {
   updateUser(data: any) {
     return this.http.put(`${this.URL}/${data.id}`, data );
   }
+  register(data: any) {
+    return this.http.post(`${this.URL}/register`, data );
+  }
 }

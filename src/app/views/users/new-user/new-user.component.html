@@ -1,1 +1,76 @@
-<p>new-user works!</p>
+<form cForm [formGroup]="form">
+  <c-row class="justify-content-center">
+    <c-col lg="7" md="9" xl="6">
+      <c-card class="mx-4">
+        <c-card-body class="p-4">
+          <h1 class="text-center">Registro de nuevo usuario</h1>
+          <c-input-group class="mb-3">
+            <span cInputGroupText>
+              <svg cIcon name="cilUser"></svg>
+            </span>
+            <input
+              autoComplete="name"
+              formControlName="name"
+              cFormControl
+              placeholder="Nombre"
+            />
+          </c-input-group>
+          <div
+            *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+            class="mb-3"
+          >
+            <div class="text-danger" *ngIf="name?.errors?.['required']">
+              *Atributo nombre no puede estar en blanco.
+            </div>
+          </div>
+
+          <c-input-group class="mb-3">
+            <span cInputGroupText>@</span>
+            <input
+              autoComplete="email"
+              formControlName="email"
+              type="email"
+              cFormControl
+              placeholder="Correo electronico"
+            />
+          </c-input-group>
+          <div
+            *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+            class="mb-3"
+          >
+            <div class="text-danger" *ngIf="email?.errors?.['required']">
+              *Atributo Correo electronico no puede estar en blanco.
+            </div>
+            <div class="text-danger" *ngIf="email?.errors?.['pattern']">
+              Debe ser un correo valido
+            </div>
+          </div>
+          <c-row class="mb-3">
+            <c-col md="2">
+              <label>Rol: </label>
+            </c-col>
+    
+            <c-col md="10">
+              <select cSelect formControlName="role" >
+                <option value="club">Club</option>
+                <option value="admin">Administrador</option>
+                <option value="asociacion">Asociacion</option>
+              </select>
+            </c-col>
+          </c-row>
+
+          <div class="d-grid">
+            <button
+              cButton
+              class="text-white"
+              (click)="registerUser()"
+              color="primary"
+            >
+              Crear Cuenta
+            </button>
+          </div>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</form>
