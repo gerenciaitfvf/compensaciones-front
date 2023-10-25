@@ -47,7 +47,8 @@ export class DefaultLayoutComponent implements OnInit {
             iconComponent: { name: 'cil-user-plus' },
             children:[
               {
-                name: 'Administración Club'
+                name: 'Administración Club',
+                url: '/usuarios/club'
               },
               {
                 name: 'Administración FVF',

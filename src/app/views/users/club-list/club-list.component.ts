@@ -5,11 +5,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-admin-list',
-  templateUrl: './admin-list.component.html',
-  styleUrls: ['./admin-list.component.scss'],
+  selector: 'app-club-list',
+  templateUrl: './club-list.component.html',
+  styleUrls: ['./club-list.component.scss']
 })
-export class AdminListComponent implements OnInit {
+export class ClubListComponent implements OnInit {
   userlist: any[] = [];
   user?: any;
   icon = { cilPen, cilTrash };
@@ -32,7 +32,7 @@ export class AdminListComponent implements OnInit {
     this.init();
   }
   init() {
-    this.authService.adminlist().subscribe((res: any) => {
+    this.authService.clublist().subscribe((res: any) => {
       console.log(res);
       this.userlist = res;
     });
@@ -56,7 +56,7 @@ export class AdminListComponent implements OnInit {
         role: this.role?.value,
         status: this.status?.value,
       };
-      console.log(data);
+      console.log(data)
       this.authService.updateUser(data).subscribe((res: any) => {
         Swal.fire('Hecho!', 'Usuario actualizado con exito', 'success').then(
           () => {

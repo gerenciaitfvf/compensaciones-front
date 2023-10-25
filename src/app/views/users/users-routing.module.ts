@@ -2,28 +2,34 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { ClubListComponent } from './club-list/club-list.component';
 
 const routes: Routes = [
-  
   {
     path: 'admin',
     component: AdminListComponent,
     data: {
-      title: 'Admin List'
-    }
+      title: 'Admin List',
+    },
+  },
+  {
+    path: 'club',
+    component: ClubListComponent,
+    data: {
+      title: 'Club List',
+    },
   },
   {
     path: 'registro',
     component: NewUserComponent,
     data: {
-      title: 'Registro'
-    }
-  }
+      title: 'Registro',
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UsersRoutingModule {
-}
+export class UsersRoutingModule {}

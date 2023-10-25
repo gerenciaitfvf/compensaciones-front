@@ -73,4 +73,7 @@ export class AuthService {
   register(data: any) {
     return this.http.post(`${this.URL}/register`, data );
   }
+  clublist() {
+    return this.http.get(`${this.URL}/club` );
+  }
 }
