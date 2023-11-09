@@ -76,4 +76,8 @@ export class AuthService {
   clublist() {
     return this.http.get(`${this.URL}/club` );
   }
+ 
+  changePassword(data: any) {
+    return this.http.post(`${this.URL}/change-password`, data );
+  }
 }

@@ -5,6 +5,7 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './views/pages/login/login.component';
 import {AuthGuard} from './guards/auth.guard'
 import { AdminGuard } from './guards/admin.guard';
+import { ChangePasswordComponent } from './views/pages/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    data: {
+      title: 'Login Page',
+    },
+  },
+  {
+    path: 'cambio-contrasena',
+    component: ChangePasswordComponent,
     data: {
       title: 'Login Page',
     },

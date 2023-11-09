@@ -54,7 +54,6 @@ export class NewUserComponent implements OnInit {
         role: this.role?.value,
         password: this.generateRandomString(8),
       };
-      console.log(data);
       this.authService.register(data).subscribe(
         (res: any) => {
           Swal.fire({
