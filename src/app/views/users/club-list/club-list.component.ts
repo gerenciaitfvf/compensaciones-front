@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-club-list',
   templateUrl: './club-list.component.html',
-  styleUrls: ['./club-list.component.scss']
+  styleUrls: ['./club-list.component.scss'],
 })
 export class ClubListComponent implements OnInit {
   userlist: any[] = [];
@@ -40,11 +40,9 @@ export class ClubListComponent implements OnInit {
   selectUser(user: any) {
     this.user = {};
 
-    if (user.role == 'user' || user.role == 'admin') {
-      this.form.controls['role'].setValue(user.role);
-    } else {
-      this.form.controls['role'].setValue('');
-    }
+    this.role?.setValue(user.role);
+    this.status?.setValue(user.status);
+
     this.user = user;
     this.visible = true;
   }
@@ -56,7 +54,7 @@ export class ClubListComponent implements OnInit {
         role: this.role?.value,
         status: this.status?.value,
       };
-      console.log(data)
+      console.log(data);
       this.authService.updateUser(data).subscribe((res: any) => {
         Swal.fire('Hecho!', 'Usuario actualizado con exito', 'success').then(
           () => {

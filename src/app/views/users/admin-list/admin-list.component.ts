@@ -39,12 +39,8 @@ export class AdminListComponent implements OnInit {
   }
   selectUser(user: any) {
     this.user = {};
-
-    if (user.role == 'user' || user.role == 'admin') {
-      this.form.controls['role'].setValue(user.role);
-    } else {
-      this.form.controls['role'].setValue('');
-    }
+    this.role?.setValue(user.role);
+    this.status?.setValue(user.status);
     this.user = user;
     this.visible = true;
   }
