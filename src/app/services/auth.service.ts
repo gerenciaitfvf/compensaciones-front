@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {environment} from 'src/environments/environment'
 import decode from 'jwt-decode';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ export class AuthService {
 
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  
   login(data: any) {
     return this.http.post(`${this.URL}/login`, data);
   }
@@ -64,6 +66,8 @@ export class AuthService {
     }
     return false;
   }
+
+
   adminlist() {
     return this.http.get(`${this.URL}/admin` );
   }
@@ -75,6 +79,10 @@ export class AuthService {
   }
   clublist() {
     return this.http.get(`${this.URL}/club` );
+  }
+
+  associationlist() {
+    return this.http.get(`${this.URL}/association`);
   }
  
   changePassword(data: any) {

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { ClubListComponent } from './club-list/club-list.component';
+import { AssociationListComponent } from './association-list/association-list.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,13 @@ const routes: Routes = [
     component: NewUserComponent,
     data: {
       title: 'Registro',
+    },
+  },
+  {
+    path: 'asociaciones',
+    component: AssociationListComponent,
+    data: {
+      title: 'Asociaciones',
     },
   },
 ];
