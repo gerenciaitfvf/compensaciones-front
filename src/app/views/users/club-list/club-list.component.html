@@ -1,26 +1,23 @@
-<div class="bg-light min-vh-100 align-items-center">
+<ng-container class="align-items-center">
   <c-row>
-    <c-col class="text-center mb-4">
-      <h1>Lista de Usuarios del sistema</h1>
+    <c-col md="8" class="text-center">
+      <h1>Lista de Clubes del sistema</h1>
     </c-col>
-  </c-row>
-  <c-row class="mb-4">
     <c-col class="text-end">
       <button
         cButton
-        class="text-white"
         routerLink="/usuarios/registro"
-        color="success"
+        color="primary"
       >
-        Registrar nuevo usuario
+        Agregar
       </button>
     </c-col>
   </c-row>
 
-  <c-row>
+  <c-row class="mt-2">
     <c-col md="12">
-      <table class="table table-info table-striped">
-        <thead>
+      <table cTable  hover>
+        <thead >
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
@@ -32,12 +29,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of userlist; let i = index">
-            <td>{{ i + 1 }}</td>
+            <td scope="row">{{ i + 1 }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>
             <td>{{ user.status }}</td>
-            <td>
+            <td class="text-end">
               <button cButton (click)="selectUser(user)" color="warning">
                 <svg [cIcon]="icon.cilPen"></svg>
               </button>
@@ -51,61 +48,62 @@
     <c-modal-header>
       <h2>Administracion de usuarios</h2>
     </c-modal-header>
-    <c-row>
-      <c-col md="12">
-        <c-card class="border-top-primary border-top-3 mb-3">
-          <c-card-header>
-            <div class="col-8 p-2">
-              <span class="">Datos de usuario</span>
-            </div>
-          </c-card-header>
-          <c-card-body>
-            <div class="row g-3 align-items-left">
-              <div class="col-1">
-                <label class="col-form-label fw-bolder">Nombre</label>
+    <c-modal-body>
+      <c-row>
+        <c-col md="12">
+          <c-card class="border-top-primary border-top-3 mb-3">
+            <c-card-header>
+              <div class="col-8 p-2">
+                <span class="">Datos de usuario</span>
               </div>
-              <div class="col-3">
-                <label class="col-form-label">{{ user?.name }}</label>
+            </c-card-header>
+            <c-card-body>
+              <div class="row g-3 align-items-left">
+                <div class="col-1">
+                  <label class="col-form-label fw-bolder">Nombre</label>
+                </div>
+                <div class="col-3">
+                  <label class="col-form-label">{{ user?.name }}</label>
+                </div>
+                <div class="col-1">
+                  <label class="col-form-label fw-bolder">Correo</label>
+                </div>
+                <div class="col-3">
+                  <label class="col-form-label">{{ user?.email }}</label>
+                </div>
               </div>
-              <div class="col-1">
-                <label class="col-form-label fw-bolder">Correo</label>
-              </div>
-              <div class="col-3">
-                <label class="col-form-label">{{ user?.email }}</label>
-              </div>
-            </div>
-          </c-card-body>
-        </c-card>
-      </c-col>
-    </c-row>
-    <form cForm [formGroup]="form">
-      <c-row class="mb-3">
-        <c-col md="2">
-          <label>Estado: </label>
-        </c-col>
-
-        <c-col md="4">
-          <select cSelect formControlName="status">
-            <option value="active">Activo</option>
-            <option value="inactive">Inactivo</option>
-          </select>
+            </c-card-body>
+          </c-card>
         </c-col>
       </c-row>
-      <c-row class="mb-3">
-        <c-col md="2">
-          <label>Rol: </label>
-        </c-col>
+      <form cForm [formGroup]="form">
+        <c-row class="mb-3">
+          <c-col md="2">
+            <label>Estado: </label>
+          </c-col>
 
-        <c-col md="4">
-          <select cSelect formControlName="role">
-            <option value="club">Club</option>
-            <option value="admin">Administrador</option>
-            <option value="asociacion">Asociacion</option>
-          </select>
-        </c-col>
-      </c-row>
-    </form>
+          <c-col md="4">
+            <select cSelect formControlName="status">
+              <option value="active">Activo</option>
+              <option value="inactive">Inactivo</option>
+            </select>
+          </c-col>
+        </c-row>
+        <c-row class="mb-3">
+          <c-col md="2">
+            <label>Rol: </label>
+          </c-col>
 
+          <c-col md="4">
+            <select cSelect formControlName="role">
+              <option value="club">Club</option>
+              <option value="admin">Administrador</option>
+              <option value="asociacion">Asociacion</option>
+            </select>
+          </c-col>
+        </c-row>
+      </form>
+    </c-modal-body>
     <c-modal-footer>
       <button cButton class="text-white" (click)="updateUser()" color="primary">
         Guardar Cambios
@@ -120,4 +118,4 @@
       </button>
     </c-modal-footer>
   </c-modal>
-</div>
+</ng-container>

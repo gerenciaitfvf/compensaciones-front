@@ -1,2 +1,25 @@
 // Here you can add other styles
 
+@import url('https://indestructibletype.com/fonts/Jost.css');
+
+:root {
+    --cui-font-sans-serif: "Jost", sans-serif;
+    --cui-link-color: #541A32;
+    --cui-link-hover-color: #351020;
+}
+
+.sidebar {
+    --cui-sidebar-bg: #541A32;
+}
+
+th {
+    color: #541A32;
+}
+
+.bg-light {
+    background-color: #541A32 !important;
+}
+
+.btn-primary {
+    background-color: #541A32 !important;
+}
