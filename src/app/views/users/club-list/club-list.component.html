@@ -1,14 +1,10 @@
 <ng-container class="align-items-center">
   <c-row>
     <c-col md="8" class="text-center">
-      <h1>Lista de Clubes del sistema</h1>
+      <h1>Lista de Clubes</h1>
     </c-col>
     <c-col class="text-end">
-      <button
-        cButton
-        routerLink="/usuarios/registro"
-        color="primary"
-      >
+      <button cButton routerLink="/usuarios/registro" color="primary">
         Agregar
       </button>
     </c-col>
@@ -16,8 +12,8 @@
 
   <c-row class="mt-2">
     <c-col md="12">
-      <table cTable  hover>
-        <thead >
+      <table cTable hover>
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
@@ -46,7 +42,7 @@
   </c-row>
   <c-modal id="liveDemoModal" [visible]="visible" backdrop="static" size="xl">
     <c-modal-header>
-      <h2>Administracion de usuarios</h2>
+      <h2>Administracion de clubes</h2>
     </c-modal-header>
     <c-modal-body>
       <c-row>
@@ -108,12 +104,7 @@
       <button cButton class="text-white" (click)="updateUser()" color="primary">
         Guardar Cambios
       </button>
-      <button
-        cButton
-        class="text-white"
-        (click)="visible = false"
-        color="warning"
-      >
+      <button cButton class="text-white" (click)="visible = false" color="warning">
         Cerrar
       </button>
     </c-modal-footer>

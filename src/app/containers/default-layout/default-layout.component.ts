@@ -58,10 +58,10 @@ export class DefaultLayoutComponent implements OnInit {
                 name: 'Administración Asociaciones',
                 url: '/usuarios/asociaciones'
               },
-              {
+             /* {
                 name: 'Registro de usuarios',
                 url: '/usuarios/registro'
-              },
+              },*/
 
             ]
           },
