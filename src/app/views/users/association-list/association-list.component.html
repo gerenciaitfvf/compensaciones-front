@@ -1,24 +1,18 @@
-<c-row>
+<ng-container class="align-items-center">
     <c-row>
-        <c-col class="text-center mb-4">
-            <h1>USUARIOS DE {{ userType }}</h1>
+        <c-col md="8" class="text-center">
+            <h1>LISTADO DE {{ userType }}</h1>
         </c-col>
-    </c-row>
-
-    <c-row class="mb-4">
-        <c-col md="12" class="text-end">
-            <button cButton color="danger" class="text-white" routerLink="/usuarios/registro">
-
-                Registrar Usuario
-
+        <c-col  class="text-end">
+            <button cButton color="primary" class="text-white" routerLink="/usuarios/registro">
+                Agregar
             </button>
         </c-col>
     </c-row>
 
-
-    <c-row>
+    <c-row class="mt-2">
         <c-col>
-            <table cTable color="danger" class="table table-info table-striped">
+            <table cTable hover>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -48,7 +42,7 @@
     </c-row>
 
 
-</c-row>
+</ng-container>
 
 
 
@@ -57,14 +51,15 @@
 
 <c-modal id="liveDemoModal" [visible]="visible" backdrop="static" size="xl">
     <c-modal-header>
-        <h2>Administracion de usuarios</h2>
+        <h2>Administracion de asociacion</h2>
     </c-modal-header>
+    <c-modal-body>
     <c-row>
         <c-col md="12">
             <c-card class="border-top-primary border-top-3 mb-3">
                 <c-card-header>
                     <div class="col-8 p-2">
-                        <span class="">Datos de usuario</span>
+                        <span class="">Datos de Asociacion</span>
                     </div>
                 </c-card-header>
                 <c-card-body>
@@ -113,7 +108,7 @@
             </c-col>
         </c-row>
     </form>
-
+    </c-modal-body>
     <c-modal-footer>
         <button cButton class="text-white" (click)="updateUser()" color="primary">
             Guardar Cambios
