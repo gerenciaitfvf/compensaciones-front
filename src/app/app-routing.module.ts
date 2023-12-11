@@ -41,6 +41,13 @@ const routes: Routes = [
           ),
           canActivate: [AdminGuard]
       },
+      {
+        path: 'clubs',
+        loadChildren: () =>
+          import('./views/clubs/clubs.module').then(
+            (m) => m.ClubsModule
+          ),
+      }
     ],
   },
 
