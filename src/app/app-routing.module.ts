@@ -55,7 +55,14 @@ const routes: Routes = [
     path: 'cambio-contrasena',
     component: ChangePasswordComponent,
     data: {
-      title: 'Login Page',
+      title: 'Change password',
+    },
+  },
+  {
+    path: 'cambio-contrasena/:hash',
+    component: ChangePasswordComponent,
+    data: {
+      title: 'Change password',
     },
   },
 
@@ -65,6 +72,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      useHash: false,
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking',

@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {environment} from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
 import decode from 'jwt-decode';
 import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +11,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private URL = `${environment.apiurl}/users`;
 
-
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
-  
+
   login(data: any) {
     return this.http.post(`${this.URL}/login`, data);
   }
@@ -35,57 +33,60 @@ export class AuthService {
     if (token) {
       let user: any = decode(token);
       let role = user.role;
-      if (role == 'admin' ) {
+      if (role == 'admin') {
         return true;
       }
       return false;
     }
     return false;
   }
-  isAssociation(){
+  isAssociation() {
     const token: any = localStorage.getItem('token');
     if (token) {
       let user: any = decode(token);
       let role = user.role;
-      if ( role == 'asociacion') {
+      if (role == 'asociacion') {
         return true;
       }
       return false;
     }
     return false;
   }
-  isClub(){
+  isClub() {
     const token: any = localStorage.getItem('token');
     if (token) {
       let user: any = decode(token);
       let role = user.role;
-      if ( role == 'club') {
+      if (role == 'club') {
         return true;
       }
       return false;
     }
     return false;
   }
-
-
   adminlist() {
-    return this.http.get(`${this.URL}/admin` );
+    return this.http.get(`${this.URL}/admin`);
   }
   updateUser(data: any) {
-    return this.http.put(`${this.URL}/${data.id}`, data );
+    return this.http.put(`${this.URL}/${data.id}`, data);
   }
   register(data: any) {
-    return this.http.post(`${this.URL}/register`, data );
+    return this.http.post(`${this.URL}/register`, data);
   }
   clublist() {
-    return this.http.get(`${this.URL}/club` );
+    return this.http.get(`${this.URL}/club`);
   }
-
   associationlist() {
     return this.http.get(`${this.URL}/association`);
   }
- 
   changePassword(data: any) {
-    return this.http.post(`${this.URL}/change-password`, data );
+    return this.http.post(`${this.URL}/change-password`, data);
+  }
+  sendEmail(data: any) {
+    return this.http.post(`${this.URL}/send-email`, data);
+  }
+  getByHash(data: any) {
+    let params = new HttpParams().set('hash', data);
+    return this.http.get(`${this.URL}/get-by-hash`, { params });
   }
 }
