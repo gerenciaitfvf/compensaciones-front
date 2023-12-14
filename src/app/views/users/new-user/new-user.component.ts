@@ -54,25 +54,22 @@ export class NewUserComponent implements OnInit {
         role: this.role?.value,
         password: this.generateRandomString(8),
       };
-      this.authService.register(data).subscribe(
-        (res: any) => {
+      this.authService.register(data).subscribe((res: any) => {
+        if (res.email) {
+          Swal.fire({
+            icon: 'error',
+            title: 'No se puede realizar el registro',
+            text: 'correo ya registrado en otro usuario',
+          });
+        } else {
           Swal.fire({
             icon: 'success',
-            title: 'Usuario registrado con exito',
+            title: 'Usuario registrado con éxito',
           }).then(() => {
             this.router.navigateByUrl('/usuarios/admin');
           });
-        },
-        (error: any) => {
-          if (error.error.email) {
-            Swal.fire({
-              icon: 'error',
-              title: 'No se puede realizar el registro',
-              text: 'correo ya registrado en otro usuario',
-            });
-          }
         }
-      );
+      });
     } else {
       Swal.fire({
         icon: 'error',

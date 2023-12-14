@@ -42,69 +42,112 @@
   </c-row>
   <c-modal id="liveDemoModal" [visible]="visible" backdrop="static" size="xl">
     <c-modal-header>
-      <h2>Administracion de clubes</h2>
+      <h2>Actualizar usuario Administrador del sistema</h2>
     </c-modal-header>
     <c-modal-body>
-      <c-row>
-        <c-col md="12">
-          <c-card class="border-top-primary border-top-3 mb-3">
-            <c-card-header>
-              <div class="col-8 p-2">
-                <span class="">Datos de usuario</span>
-              </div>
-            </c-card-header>
-            <c-card-body>
-              <div class="row g-3 align-items-left">
-                <div class="col-1">
-                  <label class="col-form-label fw-bolder">Nombre</label>
-                </div>
-                <div class="col-3">
-                  <label class="col-form-label">{{ user?.name }}</label>
-                </div>
-                <div class="col-1">
-                  <label class="col-form-label fw-bolder">Correo</label>
-                </div>
-                <div class="col-3">
-                  <label class="col-form-label">{{ user?.email }}</label>
-                </div>
-              </div>
-            </c-card-body>
-          </c-card>
-        </c-col>
-      </c-row>
       <form cForm [formGroup]="form">
-        <c-row class="mb-3">
-          <c-col md="2">
-            <label>Estado: </label>
-          </c-col>
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <c-row class="mb-3">
+              <c-col md="2">
+                <label>Nombre: </label>
+              </c-col>
+              <c-col md="10">
+                <input
+                autoComplete="name"
+                formControlName="name"
+                cFormControl
+                placeholder="Nombre"
+              />
+              </c-col>
+            </c-row>
+            <div
+              *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+              class="mb-3"
+            >
+              <div class="text-danger" *ngIf="name?.errors?.['required']">
+                *Atributo nombre no puede estar en blanco.
+              </div>
+            </div>
+            <c-row class="mb-3">
+              <c-col md="2">
+                <label>Correo: </label>
+              </c-col>
+              <c-col md="10">
+                <input
+                  autoComplete="email"
+                  formControlName="email"
+                  type="email"
+                  cFormControl
+                  placeholder="Correo electronico"
+                />
+              </c-col>
+            </c-row>
 
-          <c-col md="4">
-            <select cSelect formControlName="status">
-              <option value="active">Activo</option>
-              <option value="inactive">Inactivo</option>
-            </select>
-          </c-col>
-        </c-row>
-        <c-row class="mb-3">
-          <c-col md="2">
-            <label>Rol: </label>
-          </c-col>
+            <div
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+              class="mb-3"
+            >
+              <div class="text-danger" *ngIf="email?.errors?.['required']">
+                *Atributo Correo electronico no puede estar en blanco.
+              </div>
+              <div class="text-danger" *ngIf="email?.errors?.['pattern']">
+                Debe ser un correo valido
+              </div>
+            </div>
+            <c-row class="mb-3">
+              <c-col md="2">
+                <label>Contraseña: </label>
+              </c-col>
+              <c-col md="10">
+                <input
+                  autoComplete="password"
+                  formControlName="password"
+                  type="password"
+                  cFormControl
+                  placeholder="Contraseña"
+                />
+              </c-col>
+            </c-row>
+            <c-row class="mb-3">
+              <c-col md="2">
+                <label>Rol: </label>
+              </c-col>
+              <c-col md="10">
+                <select cSelect formControlName="role">
+                  <option value="club">Club</option>
+                  <option value="admin">Administrador</option>
+                  <option value="asociacion">Asociacion</option>
+                </select>
+              </c-col>
+            </c-row>
 
-          <c-col md="4">
-            <select cSelect formControlName="role">
-              <option value="club">Club</option>
-              <option value="admin">Administrador</option>
-              <option value="asociacion">Asociacion</option>
-            </select>
-          </c-col>
-        </c-row>
+            <c-row class="mb-3">
+              <c-col md="2">
+                <label>Estado: </label>
+              </c-col>
+
+              <c-col md="10">
+                <select cSelect formControlName="status">
+                  <option value="active">Activo</option>
+                  <option value="inactive">Inactivo</option>
+                </select>
+              </c-col>
+            </c-row>
+          </c-card-body>
+        </c-card>
       </form>
     </c-modal-body>
     <c-modal-footer>
       <button cButton class="text-white" (click)="updateUser()" color="primary">
         Guardar Cambios
       </button>
-      <button cButton class="text-white" (click)="visible = false" color="warning">
+      <button
+        cButton
+        class="text-white"
+        (click)="visible = false"
+        color="warning"
+      >
         Cerrar
       </button>
     </c-modal-footer>
