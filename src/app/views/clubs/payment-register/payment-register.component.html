@@ -1,0 +1,97 @@
+<ng-container>
+    <c-row>
+        <c-col md="12" class="text-center">
+            <h1>REGISTRO DE PAGO DE COMPENSACION</h1>
+        </c-col>
+    </c-row>
+    <c-row>
+        <c-col md="12" class="text-center px-3.5">
+            <input type="text" placeholder="Numero de Cédula" />
+            <button cButton>
+                <svg [cIcon]="icon.cilSearch"></svg>
+            </button>
+        </c-col>
+    </c-row>
+
+    <c-row class="mt-5">
+        <c-col>
+            <h6 class="text-center">¿El jugador es becado?</h6>
+            <c-row>
+                <c-col>
+                    <label for="yes" class="text-center">Si</label>
+                    <input type="radio" name="becado" id="yes">
+                </c-col>
+                <c-col>
+                    <label for="No" class="text-center">No</label>
+                    <input type="radio" name="becado" id="No">
+                </c-col>
+            </c-row>
+        </c-col>
+        <c-col>
+            <h6 class="text-center">Tipo de Transferenia</h6>
+            <c-row>
+                <c-col>
+                    <label for="one" class="text-center">Una Asociacion</label>
+                    <input type="radio" name="transfer" id="one">
+                </c-col>
+                <c-col>
+                    <label for="two" class="text-center">Dos Asociaciones</label>
+                    <input type="radio" name="transfer" id="two">
+                </c-col>
+            </c-row>
+        </c-col>
+        <c-col>
+            <h6>Años de formación</h6>
+            <input type="number" name="formacion" id="yes">
+        </c-col>
+        <c-col>
+            <h6>Modalidad</h6>
+            <div class="form-group">
+                <select id="my-select" class="form-control">
+                    <option>Futbol Campo</option>
+                    <option>Futsal</option>
+                    <option>Futbol Playa</option>
+                </select>
+            </div>
+        </c-col>
+    </c-row>
+
+    <c-row class="mt-5">
+        <c-col md="12">
+            <table cTable hover>
+                <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">FIFA ID</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">UCFVF</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>456456445</td>
+                        <td>1111AAAA</td>
+                        <td>18</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </c-col>
+    </c-row>
+    <c-row>
+        <c-col md="12" class="mt-2">
+            <h6>identificador</h6>
+            <input type="text" disabled [value]="ident">
+        </c-col>
+        <c-col md="12" class="mt-2">
+            <h6>Nombre completo</h6>
+            <input type="text" disabled [value]="ident">
+        </c-col>
+        <c-col md="12" class="mt-2">
+            <h6>club anterior</h6>
+            <input type="text" disabled [value]="ident">
+        </c-col>
+        <c-col md="12" class="mt-2">
+            <h6>club destino</h6>
+            <input type="text" [value]="ident">
+        </c-col>
+    </c-row>
+</ng-container>
